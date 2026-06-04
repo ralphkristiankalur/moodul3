@@ -1,9 +1,15 @@
-const navToggle = document.querySelector(".nav-toggle");
-const navMenu = document.querySelector(".nav-menu");
+document.querySelectorAll(".cart-qty").forEach(qty => {
+  const minus = qty.children[0];
+  const value = qty.children[1];
+  const plus = qty.children[2];
 
-if (navToggle && navMenu) {
-  navToggle.addEventListener("click", () => {
-    const isOpen = navMenu.classList.toggle("is-open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
+  plus.addEventListener("click", () => {
+    value.textContent = Number(value.textContent) + 1;
   });
-}
+
+  minus.addEventListener("click", () => {
+    if (Number(value.textContent) > 1) {
+      value.textContent = Number(value.textContent) - 1;
+    }
+  });
+});

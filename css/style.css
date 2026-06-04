@@ -154,12 +154,30 @@ img {
   align-items: center;
 }
 
+.features {
+  height: 140px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
 .features article {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.features article p {
+  margin: 0;
   font-size: 18px;
-  font-weight: 500;
+}
+
+.features span {
+  font-size: 32px;
+  line-height: 1;
 }
 
 .features span {
