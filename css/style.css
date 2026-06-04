@@ -411,3 +411,155 @@ img {
     display: none;
   }
 }
+
+/* ALBUMID PAGE */
+
+.page-hero {
+  background: var(--blue);
+  color: white;
+  padding: 38px 0 36px;
+}
+
+.page-hero h1 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.page-hero p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.album-page {
+  padding: 46px 0 110px;
+}
+
+.category-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 74px;
+}
+
+.category-row button {
+  width: 74px;
+  height: 28px;
+  background: transparent;
+  border: 1px solid var(--border, #667896);
+  border-radius: 3px;
+  color: var(--text);
+  font-size: 12px;
+}
+
+.album-layout {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 65px;
+}
+
+.filters h2 {
+  font-size: 16px;
+  margin: 0 0 34px;
+}
+
+.filters h2:nth-of-type(2) {
+  margin-top: 66px;
+}
+
+.filters label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  font-size: 15px;
+}
+
+.box {
+  width: 17px;
+  height: 17px;
+  border: 1px solid #526781;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.box.active {
+  background: var(--red);
+}
+
+.sort-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 55px;
+  margin: -5px 0 55px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 58px 18px;
+}
+
+.shop-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin-bottom: 28px;
+}
+
+.shop-card h3 {
+  margin: 0 0 14px;
+  font-size: 16px;
+}
+
+.shop-card p {
+  margin: 0 0 14px;
+  font-size: 13px;
+}
+
+.shop-card strong {
+  font-size: 16px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 52px;
+}
+
+.pagination a {
+  width: 26px;
+  height: 26px;
+  border: 1px solid #526781;
+  border-radius: 3px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+}
+
+.pagination a.active {
+  background: var(--red);
+  color: white;
+}
+
+@media (max-width: 900px) {
+  .album-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .shop-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .category-row {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .shop-grid {
+    grid-template-columns: 1fr;
+  }
+}
