@@ -10,13 +10,17 @@
 <body>
 
 <header class="header">
-  <div class="nav container">
+  <div class="header-container">
+
     <a href="index.html" class="logo">
-      <img src="assets/images/bgroove.png" alt="Groove logo">
+        <picture>
+            <source srcset="assets/webp/bgroove.webp" type="image/webp">
+            <img src="assets/webp/bgroove.webp" alt="Cozy Groove vinyl shop interior" width="800" height="520">
+        </picture>
     </a>
 
-    <nav aria-label="Peamenüü">
-      <ul class="menu">
+    <nav>
+      <ul class="nav-links">
         <li><a href="index.html">Avaleht</a></li>
         <li><a class="active" href="albums.html">Albumid</a></li>
         <li><a href="#">Üritused</a></li>
@@ -25,10 +29,22 @@
       </ul>
     </nav>
 
-    <div class="icons">
-      <a href="#" aria-label="Otsi">⌕</a>
-      <a href="cart.html" aria-label="Ostukorv">🛒</a>
+    <div class="header-icons">
+      <a href="#" aria-label="Search">
+        <picture>
+          <source srcset="assets/webp/search.webp" type="image/webp">
+          <img src="assets/webp/search.webp" alt="Search">
+        </picture>
+      </a>
+
+      <a href="ostukorv.html" aria-label="Cart">
+        <picture>
+  <source srcset="assets/webp/cart.webp" type="image/webp">
+  <img src="assets/webp/cart.webp" alt="Cart">
+</picture>
+      </a>
     </div>
+
   </div>
 </header>
 
@@ -42,12 +58,12 @@
 
   <section class="album-page container">
     <div class="category-row">
-      <button>Kõik</button>
-      <button>Rock</button>
-      <button>Jazz</button>
-      <button>Soul</button>
-      <button>Hip-Hop</button>
-      <button>Electronic</button>
+      <button data-filter="all">Kõik</button>
+      <button data-filter="rock">Rock</button>
+      <button data-filter="jazz">Jazz</button>
+      <button data-filter="soul">Soul</button>
+      <button data-filter="hip-hop">Hip-Hop</button>
+      <button data-filter="electronic">Electronic</button>
     </div>
 
     <div class="album-layout">
@@ -78,7 +94,10 @@
         <div class="shop-grid">
           <article class="shop-card">
             <a href="detail.html">
-              <img src="assets/images/albums.png" alt="Volume One album" loading="lazy">
+              <picture>
+  <source srcset="assets/webp/daydreamer.webp" type="image/webp">
+  <img src="assets/webp/daydreamer.webp" alt="Cozy Groove vinyl shop interior" width="800" height="250">
+</picture>
             </a>
             <h3>Volume One</h3>
             <p>Night Drive</p>
@@ -87,7 +106,10 @@
 
           <article class="shop-card">
             <a href="detail.html">
-              <img src="assets/images/albums.png" alt="Simple Things album" loading="lazy">
+              <picture>
+  <source srcset="assets/webp/echo.webp" type="image/webp">
+  <img src="assets/webp/echo.webp" alt="Echo album" width="800" height="250">
+</picture>
             </a>
             <h3>Arctic Monkeys</h3>
             <p>AM</p>
@@ -96,7 +118,10 @@
 
           <article class="shop-card">
             <a href="detail.html">
-              <img src="assets/images/albums.png" alt="Free As We Are album" loading="lazy">
+              <picture>
+  <source srcset="assets/webp/flower.webp" type="image/webp">
+  <img src="assets/webp/flower.webp" alt="Flower album" width="800" height="250">
+</picture>
             </a>
             <h3>Arctic Monkeys</h3>
             <p>AM</p>
@@ -105,7 +130,10 @@
 
           <article class="shop-card">
             <a href="detail.html">
-              <img src="assets/images/albums.png" alt="Growing Silence album" loading="lazy">
+              <picture>
+  <source srcset="assets/webp/free.webp" type="image/webp">
+  <img src="assets/webp/free.webp" alt="Growing Silence album" width="800" height="250">
+</picture>
             </a>
             <h3>Arctic Monkeys</h3>
             <p>AM</p>
@@ -114,7 +142,10 @@
 
           <article class="shop-card">
             <a href="detail.html">
-              <img src="assets/images/albums.png" alt="Chaos to Clarity album" loading="lazy">
+              <picture>
+  <source srcset="assets/webp/moments.webp" type="image/webp">
+  <img src="assets/webp/moments.webp" alt="Moments album" width="800" height="250">
+</picture>
             </a>
             <h3>Arctic Monkeys</h3>
             <p>AM</p>
@@ -123,7 +154,10 @@
 
           <article class="shop-card">
             <a href="detail.html">
-              <img src="assets/images/albums.png" alt="Silence album" loading="lazy">
+              <picture>
+  <source srcset="assets/webp/paint.webp" type="image/webp">
+  <img src="assets/webp/paint.webp" alt="Paint album" width="800" height="250">
+</picture>
             </a>
             <h3>Arctic Monkeys</h3>
             <p>AM</p>
@@ -146,7 +180,10 @@
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <img src="assets/images/dsa.png" alt="Groove logo">
+      <picture>
+  <source srcset="assets/webp/dsa.webp" type="image/webp">
+  <img src="assets/webp/dsa.webp" alt="Cozy Groove vinyl shop interior" width="1500" height="110">
+</picture>
       <p>Vinüülid, kohv ja kogukond.</p>
       <p>Groove | sinu muusika kodu.</p>
     </div>
@@ -177,7 +214,7 @@
       <p>info@groove.ee</p>
       <p>+372 1234 4321</p>
       <p>Pärnu mnt. 57, Tallinn</p>
-      <div class="socials">▣  f</div>
+      <div class="socials">@  f</div>
     </div>
   </div>
 </footer>

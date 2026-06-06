@@ -9,13 +9,17 @@
 <body>
 
 <header class="header">
-  <div class="nav container">
+  <div class="header-container">
+
     <a href="index.html" class="logo">
-      <img src="assets/images/bgroove.png" alt="Groove logo">
+        <picture>
+            <source srcset="assets/webp/bgroove.webp" type="image/webp">
+            <img src="assets/webp/bgroove.webp" alt="Cozy Groove vinyl shop interior" width="800" height="520">
+        </picture>
     </a>
 
-    <nav aria-label="Peamenüü">
-      <ul class="menu">
+    <nav>
+      <ul class="nav-links">
         <li><a href="index.html">Avaleht</a></li>
         <li><a class="active" href="albums.html">Albumid</a></li>
         <li><a href="#">Üritused</a></li>
@@ -24,10 +28,22 @@
       </ul>
     </nav>
 
-    <div class="icons">
-      <a href="#" aria-label="Otsi">⌕</a>
-      <a href="cart.html" aria-label="Ostukorv">🛒</a>
+    <div class="header-icons">
+      <a href="#" aria-label="Search">
+        <picture>
+          <source srcset="assets/webp/search.webp" type="image/webp">
+          <img src="assets/webp/search.webp" alt="Search">
+        </picture>
+      </a>
+
+      <a href="ostukorv.html" aria-label="Cart">
+        <picture>
+  <source srcset="assets/webp/cart.webp" type="image/webp">
+  <img src="assets/webp/cart.webp" alt="Cart">
+</picture>
+      </a>
     </div>
+
   </div>
 </header>
 
@@ -40,12 +56,24 @@
 
   <section class="detail container">
     <div class="detail-gallery">
-      <img class="main-cover" src="assets/images/albums.png" alt="Arctic Monkeys AM albumikaas">
+      <picture>
+  <source srcset="assets/webp/free.webp" type="image/webp">
+  <img src="assets/webp/free.webp" alt="Cozy Groove vinyl shop interior" width="1000" height="400">
+</picture>
 
       <div class="thumbs">
-        <img src="assets/images/albums.png" alt="Vinüülplaadi eelvaade" loading="lazy">
-        <img src="assets/images/albums.png" alt="Vinüülplaadi eelvaade" loading="lazy">
-        <img src="assets/images/albums.png" alt="Vinüülplaadi eelvaade" loading="lazy">
+        <picture>
+  <source srcset="assets/webp/fvinuul1.webp" type="image/webp">
+  <img src="assets/webp/fvinuul1.webp" alt="Cozy Groove vinyl shop interior" width="800" height="150">
+</picture>
+        <picture>
+  <source srcset="assets/webp/fvinuul2.webp" type="image/webp">
+  <img src="assets/webp/fvinuul2.webp" alt="Cozy Groove vinyl shop interior" width="800" height="150">
+</picture>
+        <picture>
+  <source srcset="assets/webp/fvinuul3.webp" type="image/webp">
+  <img src="assets/webp/fvinuul3.webp" alt="Cozy Groove vinyl shop interior" width="800" height="150">
+</picture>
       </div>
     </div>
 
@@ -72,7 +100,7 @@
         </div>
       </div>
 
-      <a class="cart-btn" href="cart.html">LISA OSTUKORVI</a>
+      <a class="cart-btn" href="ostukorv.html">LISA OSTUKORVI</a>
       <a class="fav-btn" href="#">LISA LEMMIKUTESSE</a>
     </div>
   </section>
@@ -98,7 +126,10 @@
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <img src="assets/images/dsa.png" alt="Groove logo">
+      <picture>
+  <source srcset="assets/webp/dsa.webp" type="image/webp">
+  <img src="assets/webp/dsa.webp" alt="Cozy Groove vinyl shop interior" width="1500" height="110">
+</picture>
       <p>Vinüülid, kohv ja kogukond.</p>
       <p>Groove | sinu muusika kodu.</p>
     </div>
@@ -129,7 +160,7 @@
       <p>info@groove.ee</p>
       <p>+372 1234 4321</p>
       <p>Pärnu mnt. 57, Tallinn</p>
-      <div class="socials">▣  f</div>
+      <div class="socials">@  f</div>
     </div>
   </div>
 </footer>

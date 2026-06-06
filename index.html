@@ -6,17 +6,27 @@
   <meta name="description" content="Groove - vinüülid, kohv ja kogukond.">
   <title>Groove | Avaleht</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
-<body>
+<body
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <header class="header">
-  <div class="nav container">
+  <div class="header-container">
+
     <a href="index.html" class="logo">
-      <img src="assets/images/bgroove.png" alt="Groove logo">
+        <picture>
+            <source srcset="assets/webp/bgroove.webp" type="image/webp">
+            <img src="assets/webp/bgroove.webp" alt="Cozy Groove vinyl shop interior" width="800" height="520">
+        </picture>
     </a>
 
-    <nav aria-label="Peamenüü">
-      <ul class="menu">
+    <nav>
+      <ul class="nav-links">
         <li><a class="active" href="index.html">Avaleht</a></li>
         <li><a href="albums.html">Albumid</a></li>
         <li><a href="#">Üritused</a></li>
@@ -25,10 +35,22 @@
       </ul>
     </nav>
 
-    <div class="icons">
-      <a href="#" aria-label="Otsi">⌕</a>
-      <a href="ostukorv.html" aria-label="Ostukorv">🛒</a>
+    <div class="header-icons">
+      <a href="#" aria-label="Search">
+        <picture>
+          <source srcset="assets/webp/search.webp" type="image/webp">
+          <img src="assets/webp/search.webp" alt="Search">
+        </picture>
+      </a>
+
+      <a href="ostukorv.html" aria-label="Cart">
+        <picture>
+  <source srcset="assets/webp/cart.webp" type="image/webp">
+  <img src="assets/webp/cart.webp" alt="Cart">
+</picture>
+      </a>
     </div>
+
   </div>
 </header>
 
@@ -47,24 +69,29 @@
     </div>
 
     <div class="hero-image">
-      <img src="assets/images/gstore.jpg" alt="Groove vinüülplaadipood">
+      <picture>
+  <source srcset="assets/webp/gstore.webp" type="image/webp">
+  <img src="assets/webp/gstore.webp" alt="Cozy Groove vinyl shop interior" width="800" height="520">
+</picture>
     </div>
   </section>
 
-  <section class="features container">
-    <article>
-      <span>◉</span>
-      <p>Kasutatud vinüülid</p>
-    </article>
-    <article>
-      <span>☕</span>
-      <p>Hubane kohvik</p>
-    </article>
-    <article>
-      <span>▣</span>
-      <p>Kogukond ja üritused</p>
-    </article>
-  </section>
+<section class="features container">
+  <article>
+    <i class="fa-solid fa-record-vinyl"></i>
+    <p>Kasutatud vinüülid</p>
+  </article>
+
+  <article>
+    <i class="fa-solid fa-mug-hot"></i>
+    <p>Hubane kohvik</p>
+  </article>
+
+  <article>
+    <i class="fa-solid fa-calendar-check"></i>
+    <p>Kogukond ja üritused</p>
+  </article>
+</section>
 
   <section class="albums container">
     <div class="section-head">
@@ -74,28 +101,40 @@
 
     <div class="album-grid">
       <article class="album-card">
-        <img src="assets/images/albums.png" alt="Daydreamer album cover" loading="lazy">
+        <picture>
+            <source srcset="assets/webp/daydreamer.webp" type="image/webp">
+        <img src="assets/webp/daydreamer.webp" alt="Cozy Groove vinyl shop interior" width="40" height="250">
+        </picture>
         <h3>Rulak</h3>
         <p>White Box</p>
         <strong>24.90</strong>
       </article>
 
       <article class="album-card">
-        <img src="assets/images/albums.png" alt="Echoes of Yesterday album cover" loading="lazy">
+        <picture>
+            <source srcset="assets/webp/echo.webp" type="image/webp">
+            <img src="assets/webp/echo.webp" alt="Ojlak album cover titled Red Moon" loading="lazy">
+        </picture>
         <h3>Ojlak</h3>
         <p>Red Moon</p>
         <strong>22.00</strong>
       </article>
 
       <article class="album-card">
-        <img src="assets/images/albums.png" alt="Moments album cover" loading="lazy">
+        <picture>
+            <source srcset="assets/webp/moments.webp" type="image/webp">
+            <img src="assets/webp/moments.webp" alt="Esuurg album cover titled Tree" loading="lazy">
+        </picture>
         <h3>Esuurg</h3>
         <p>Tree</p>
         <strong>26.00</strong>
       </article>
 
       <article class="album-card">
-        <img src="assets/images/albums.png" alt="After the Rain album cover" loading="lazy">
+        <picture>
+            <source srcset="assets/webp/simple.webp" type="image/webp">
+            <img src="assets/webp/simple.webp" alt="Remmuk album cover titled Mud In The Rain" loading="lazy">
+        </picture>
         <h3>Remmuk</h3>
         <p>Mud In The Rain</p>
         <strong>20.00</strong>
@@ -103,57 +142,89 @@
     </div>
   </section>
 
-  <section class="dark-section">
-    <div class="container dark-grid">
-      <div>
-        <h2>POPULAARSED VALIKUD</h2>
-        <div class="popular">
-          <span>←</span>
-          <img src="assets/images/albums.png" alt="Album cover" loading="lazy">
-          <img src="assets/images/albums.png" alt="Album cover" loading="lazy">
-          <img src="assets/images/albums.png" alt="Album cover" loading="lazy">
-          <img src="assets/images/albums.png" alt="Album cover" loading="lazy">
-          <span>→</span>
+<section class="dark-section">
+  <div class="container dark-grid">
+
+    <div class="popular-block">
+      <h2>POPULAARSED VALIKUD</h2>
+
+      <div class="slider">
+        <button class="slider-btn prev" type="button">←</button>
+
+        <div class="slider-window">
+          <div class="slider-track">
+            <picture>
+              <source srcset="assets/webp/echo.webp" type="image/webp">
+              <img src="assets/webp/echo.webp" alt="Album">
+            </picture>
+            <picture>
+              <source srcset="assets/webp/daydreamer.webp" type="image/webp">
+              <img src="assets/webp/daydreamer.webp" alt="Album">
+            </picture>
+            <picture>
+              <source srcset="assets/webp/simple.webp" type="image/webp">
+              <img src="assets/webp/simple.webp" alt="Album">
+            </picture>
+            <picture>
+              <source srcset="assets/webp/daydreamer.webp" type="image/webp">
+              <img src="assets/webp/daydreamer.webp" alt="Album">
+            </picture>
+            <picture>
+              <source srcset="assets/webp/moments.webp" type="image/webp">
+              <img src="assets/webp/moments.webp" alt="Album">
+            </picture>
+            <picture>
+              <source srcset="assets/webp/echo.webp" type="image/webp">
+              <img src="assets/webp/echo.webp" alt="Album">
+            </picture>
+          </div>
+        </div>
+
+        <button class="slider-btn next" type="button">→</button>
+      </div>
+    </div>
+
+    <aside class="events">
+      <h2>TULEVASED ÜRITUSED</h2>
+
+      <div class="event">
+        <strong>OO</strong>
+        <div>
+          <h3>Plaadihommik</h3>
+          <p>11. juuni | 11:00 - 13:00</p>
         </div>
       </div>
 
-      <aside class="events">
-        <h2>TULEVASED ÜRITUSED</h2>
-
-        <div class="event">
-          <strong>1</strong>
-          <div>
-            <h3>Plaadihommik</h3>
-            <p>11. mai | 11:00 - 13:00</p>
-          </div>
+      <div class="event">
+        <strong>OO</strong>
+        <div>
+          <h3>Live: Silver Ray</h3>
+          <p>13. juuni | 18:00</p>
         </div>
+      </div>
 
-        <div class="event">
-          <strong>1</strong>
-          <div>
-            <h3>Live: Silver Ray</h3>
-            <p>13. mai | 18:00</p>
-          </div>
+      <div class="event">
+        <strong>OO</strong>
+        <div>
+          <h3>Kohvik & Vinüüli Õhtu</h3>
+          <p>24. juuni | 18:00 - 22:00</p>
         </div>
+      </div>
 
-        <div class="event">
-          <strong>1</strong>
-          <div>
-            <h3>Kohvik & Vinüüli Õhtu</h3>
-            <p>24. mai | 18:00 - 22:00</p>
-          </div>
-        </div>
+      <a href="#" class="event-btn">VAATA KÕIKI ÜRITUSI</a>
+    </aside>
 
-        <a href="#" class="event-btn">VAATA KÕIKI ÜRITUSI</a>
-      </aside>
-    </div>
-  </section>
+  </div>
+</section>
 </main>
 
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <img src="assets/images/dsa.png" alt="Groove logo">
+      <picture>
+  <source srcset="assets/webp/dsa.webp" type="image/webp">
+  <img src="assets/webp/dsa.webp" alt="Cozy Groove vinyl shop interior" width="1500" height="110">
+</picture>
       <p>Vinüülid, kohv ja kogukond.</p>
       <p>Groove | sinu muusika kodu.</p>
     </div>
@@ -184,10 +255,12 @@
       <p>info@groove.ee</p>
       <p>+372 1234 4321</p>
       <p>Pärnu mnt. 57, Tallinn</p>
-      <div class="socials">▣  f</div>
+      <div class="socials">@  f</div>
     </div>
   </div>
 </footer>
-
+<script src="js/main.js"></script>
+</body>
+</html>
 </body>
 </html>
