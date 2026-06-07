@@ -3,33 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin Login</title>
+  <link rel="stylesheet" href="/css/admin.css">
 </head>
-<body>
+<body class="login-page">
 
-<h1>Admin Login</h1>
+  <div class="login-box">
+    <h1>Admin Login</h1>
 
-<form method="POST" action="/admin/login">
+    <form class="admin-form" method="POST" action="/admin/login">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
-  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <input
+        type="text"
+        name="username"
+        placeholder="Kasutajanimi"
+        required
+      >
 
-  <input
-    type="text"
-    name="username"
-    placeholder="Kasutajanimi"
-    required
-  >
+      <input
+        type="password"
+        name="password"
+        placeholder="Parool"
+        required
+      >
 
-  <input
-    type="password"
-    name="password"
-    placeholder="Parool"
-    required
-  >
-
-  <button type="submit">
-    Logi sisse
-  </button>
-</form>
+      <button class="admin-btn primary" type="submit">
+        Logi sisse
+      </button>
+    </form>
+  </div>
 
 </body>
 </html>

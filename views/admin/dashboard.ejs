@@ -3,55 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
-  <h1>Albumid</h1>
 
-  <p>
-    <a href="/admin/albums/new">Lisa uus album</a>
-  </p>
+<header class="admin-header">
+  <div class="admin-container admin-nav">
+    <div class="admin-logo">Groove Admin</div>
+    <nav>
+      <a href="/">Avaleht</a>
+      <a href="/albums">Albumid</a>
+      <a href="/admin/logout">Logi välja</a>
+    </nav>
+  </div>
+</header>
 
-  <p>
-    <a href="/admin/logout">Logi välja</a>
-  </p>
+<main class="admin-main">
+  <div class="admin-container">
+    <div class="admin-card">
+      <h1 class="admin-title">Albumid</h1>
 
-  <table border="1" cellpadding="8">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Pealkiri</th>
-        <th>Artist</th>
-        <th>Žanr</th>
-        <th>Aasta</th>
-        <th>Hind</th>
-        <th>Seisukord</th>
-        <th>Tegevused</th>
-      </tr>
-    </thead>
+      <div class="admin-actions">
+        <a class="admin-btn primary" href="/admin/albums/new">Lisa uus album</a>
+      </div>
 
-    <tbody>
-      <% albums.forEach(album => { %>
-        <tr>
-          <td><%= album.id %></td>
-          <td><%= album.title %></td>
-          <td><%= album.artist %></td>
-          <td><%= album.genre %></td>
-          <td><%= album.year %></td>
-          <td><%= album.price %></td>
-          <td><%= album.condition %></td>
-          <td>
-            <a href="/admin/albums/<%= album.id %>/edit">Muuda</a>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Pealkiri</th>
+            <th>Artist</th>
+            <th>Žanr</th>
+            <th>Aasta</th>
+            <th>Hind</th>
+            <th>Seisukord</th>
+            <th>Tegevused</th>
+          </tr>
+        </thead>
 
-            <form method="POST" action="/admin/albums/<%= album.id %>/delete" style="display:inline;">
+        <tbody>
+          <% albums.forEach(album => { %>
+            <tr>
+              <td><%= album.id %></td>
+              <td><%= album.title %></td>
+              <td><%= album.artist %></td>
+              <td><%= album.genre %></td>
+              <td><%= album.year %></td>
+              <td><%= album.price %></td>
+              <td><%= album.condition %></td>
+              <td>
+                <a class="admin-btn" href="/admin/albums/<%= album.id %>/edit">Muuda</a>
 
-  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <form method="POST" action="/admin/albums/<%= album.id %>/delete" style="display:inline;">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button class="admin-btn danger" type="submit">Kustuta</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
 
-  <button type="submit">Kustuta</button>
-</form>
-          </td>
-        </tr>
-      <% }) %>
-    </tbody>
-  </table>
 </body>
 </html>

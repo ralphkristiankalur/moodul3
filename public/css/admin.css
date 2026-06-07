@@ -1,0 +1,163 @@
+:root {
+  --bg: #dfe7f4;
+  --blue: #0050c8;
+  --dark: #062f70;
+  --text: #071936;
+  --border: #526781;
+  --white: #ffffff;
+  --red: #ff5564;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.admin-header {
+  background: var(--dark);
+  color: white;
+  padding: 24px 0;
+}
+
+.admin-container {
+  width: min(1100px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.admin-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-logo {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.admin-nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.admin-main {
+  padding: 56px 0;
+}
+
+.admin-card {
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(82,103,129,0.35);
+  border-radius: 18px;
+  padding: 32px;
+}
+
+.admin-title {
+  margin: 0 0 28px;
+  font-size: 32px;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-btn.primary {
+  background: var(--blue);
+  color: white;
+  border-color: var(--blue);
+}
+
+.admin-btn.danger {
+  background: var(--red);
+  border-color: var(--red);
+  color: white;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 14px;
+  border-bottom: 1px solid rgba(82,103,129,0.35);
+  text-align: left;
+}
+
+.admin-table th {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.admin-form {
+  display: grid;
+  gap: 18px;
+  max-width: 520px;
+}
+
+.admin-form input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  font: inherit;
+}
+
+.admin-form button {
+  margin-top: 12px;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.login-box {
+  width: min(420px, calc(100% - 40px));
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(82,103,129,0.35);
+  border-radius: 20px;
+  padding: 36px;
+}
+
+.login-box h1 {
+  margin: 0 0 24px;
+  font-size: 32px;
+}
+
+@media (max-width: 700px) {
+  .admin-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .admin-actions {
+    flex-direction: column;
+  }
+}
