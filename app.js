@@ -37,6 +37,40 @@ app.use((req, res, next) => {
   next();
 });
 
+const albumValidation = [
+  body("title")
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage("Pealkiri on kohustuslik"),
+
+  body("artist")
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage("Artist on kohustuslik"),
+
+  body("genre")
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage("Žanr on kohustuslik"),
+
+  body("year")
+    .isInt({ min: 1900, max: 2026 })
+    .withMessage("Aasta peab olema korrektne"),
+
+  body("price")
+    .isFloat({ min: 0 })
+    .withMessage("Hind peab olema positiivne number"),
+
+  body("condition")
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage("Seisukord on kohustuslik"),
+
+  body("image")
+    .optional({ checkFalsy: true })
+    .trim()
+];
+
 /* Public routes */
 
 app.get("/", (req, res) => {
@@ -161,12 +195,26 @@ app.get("/admin/albums/new", (req, res) => {
   res.render("admin/album-form");
 });
 
-app.post("/admin/albums/new", (req, res) => {
+app.post("/admin/albums/new", albumValidation, (req, res) => {
   if (!req.session.userId) {
     return res.redirect("/admin/login");
   }
 
-  const { title, artist, genre, year, price, condition, image } = req.body;
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.send(errors.array()[0].msg);
+  }
+
+  const {
+    title,
+    artist,
+    genre,
+    year,
+    price,
+    condition,
+    image
+  } = req.body;
 
   db.run(
     `
@@ -201,12 +249,26 @@ app.get("/admin/albums/:id/edit", (req, res) => {
   });
 });
 
-app.post("/admin/albums/:id/edit", (req, res) => {
+app.post("/admin/albums/:id/edit", albumValidation, (req, res) => {
   if (!req.session.userId) {
     return res.redirect("/admin/login");
   }
 
-  const { title, artist, genre, year, price, condition, image } = req.body;
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.send(errors.array()[0].msg);
+  }
+
+  const {
+    title,
+    artist,
+    genre,
+    year,
+    price,
+    condition,
+    image
+  } = req.body;
 
   db.run(
     `
