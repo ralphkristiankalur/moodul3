@@ -17,7 +17,6 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cookieParser());
@@ -45,11 +44,27 @@ app.get("/", (req, res) => {
 });
 
 app.get("/albums", (req, res) => {
-  res.render("albums");
+  db.all("SELECT * FROM albums ORDER BY id DESC", [], (err, albums) => {
+    if (err) {
+      return res.send("Albumite laadimisel tekkis viga");
+    }
+
+    res.render("albums", { albums });
+  });
 });
 
 app.get("/detail", (req, res) => {
   res.render("detail");
+});
+
+app.get("/detail/:id", (req, res) => {
+  db.get("SELECT * FROM albums WHERE id = ?", [req.params.id], (err, album) => {
+    if (err || !album) {
+      return res.send("Albumit ei leitud");
+    }
+
+    res.render("detail", { album });
+  });
 });
 
 app.get("/kontakt", (req, res) => {

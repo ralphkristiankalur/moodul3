@@ -130,78 +130,28 @@
         </div>
 
         <div class="shop-grid">
-          <article class="shop-card">
-            <a href="/detail">
-              <picture>
-  <source srcset="assets/webp/daydreamer.webp" type="image/webp">
-  <img src="assets/webp/daydreamer.webp" alt="Cozy Groove vinyl shop interior" width="800" height="250">
-</picture>
-            </a>
-            <h3>Volume One</h3>
-            <p>Night Drive</p>
-            <strong>24.90</strong>
-          </article>
+  <% albums.forEach(album => { %>
 
-          <article class="shop-card">
-            <a href="/detail">
-              <picture>
-  <source srcset="assets/webp/echo.webp" type="image/webp">
-  <img src="assets/webp/echo.webp" alt="Echo album" width="800" height="250">
-</picture>
-            </a>
-            <h3>Arctic Monkeys</h3>
-            <p>AM</p>
-            <strong>24.90</strong>
-          </article>
+    <article class="shop-card" data-genre="<%= album.genre.toLowerCase() %>">
 
-          <article class="shop-card">
-            <a href="/detail">
-              <picture>
-  <source srcset="assets/webp/flower.webp" type="image/webp">
-  <img src="assets/webp/flower.webp" alt="Flower album" width="800" height="250">
-</picture>
-            </a>
-            <h3>Arctic Monkeys</h3>
-            <p>AM</p>
-            <strong>24.90</strong>
-          </article>
+      <a href="/detail/<%= album.id %>">
+        <img
+          src="/assets/webp/<%= album.image %>"
+          alt="<%= album.artist %> - <%= album.title %>"
+          width="800"
+          height="250"
+          loading="lazy"
+        >
+      </a>
 
-          <article class="shop-card">
-            <a href="/detail">
-              <picture>
-  <source srcset="assets/webp/free.webp" type="image/webp">
-  <img src="assets/webp/free.webp" alt="Growing Silence album" width="800" height="250">
-</picture>
-            </a>
-            <h3>Arctic Monkeys</h3>
-            <p>AM</p>
-            <strong>24.90</strong>
-          </article>
+      <h3><%= album.artist %></h3>
+      <p><%= album.title %></p>
+      <strong><%= album.price %> €</strong>
 
-          <article class="shop-card">
-            <a href="/detail">
-              <picture>
-  <source srcset="assets/webp/moments.webp" type="image/webp">
-  <img src="assets/webp/moments.webp" alt="Moments album" width="800" height="250">
-</picture>
-            </a>
-            <h3>Arctic Monkeys</h3>
-            <p>AM</p>
-            <strong>24.90</strong>
-          </article>
+    </article>
 
-          <article class="shop-card">
-            <a href="/detail">
-              <picture>
-  <source srcset="assets/webp/paint.webp" type="image/webp">
-  <img src="assets/webp/paint.webp" alt="Paint album" width="800" height="250">
-</picture>
-            </a>
-            <h3>Arctic Monkeys</h3>
-            <p>AM</p>
-            <strong>24.90</strong>
-          </article>
-        </div>
+  <% }) %>
+</div>
 
         <div class="pagination">
           <a class="active" href="/albums">1</a>
