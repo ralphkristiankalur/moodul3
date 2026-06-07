@@ -8,6 +8,7 @@ require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const { body, validationResult } = require("express-validator");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -43,29 +44,56 @@ app.get("/kontakt", (req, res) => {
   res.render("kontakt", { success: false });
 });
 
-app.post("/kontakt", (req, res) => {
-  const { name, email, topic, message } = req.body;
+app.post(
+  "/kontakt",
+  [
+    body("name")
+      .trim()
+      .isLength({ min: 2 })
+      .withMessage("Nimi peab olema vähemalt 2 tähemärki"),
 
-  if (!name || !email || !message) {
-    return res.send("Palun täida kõik kohustuslikud väljad");
-  }
+    body("email")
+      .trim()
+      .isEmail()
+      .withMessage("Sisesta korrektne e-post"),
 
-  db.run(
-    `
-      INSERT INTO contacts
-      (name, email, subject, message)
-      VALUES (?, ?, ?, ?)
-    `,
-    [name, email, topic || "Teemata", message],
-    (err) => {
-      if (err) {
-        return res.send("Sõnumi saatmine ebaõnnestus");
-      }
+    body("message")
+      .trim()
+      .isLength({ min: 5 })
+      .withMessage("Sõnum peab olema vähemalt 5 tähemärki"),
 
-      res.render("kontakt", { success: true });
+    body("topic")
+      .optional({ checkFalsy: true })
+      .trim()
+      .isLength({ max: 100 })
+      .withMessage("Teema on liiga pikk")
+  ],
+  (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.send(errors.array()[0].msg);
     }
-  );
-});
+
+    const { name, email, topic, message } = req.body;
+
+    db.run(
+      `
+        INSERT INTO contacts
+        (name, email, subject, message)
+        VALUES (?, ?, ?, ?)
+      `,
+      [name, email, topic || "Teemata", message],
+      (err) => {
+        if (err) {
+          return res.send("Sõnumi saatmine ebaõnnestus");
+        }
+
+        res.render("kontakt", { success: true });
+      }
+    );
+  }
+);
 
 app.get("/ostukorv", (req, res) => {
   res.render("ostukorv");
