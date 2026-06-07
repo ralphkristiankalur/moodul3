@@ -320,3 +320,7 @@ app.get("/admin/logout", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server töötab: http://localhost:${PORT}`);
 });
+
+app.get("/varsti", (req, res) => {
+  res.render("varsti");
+});

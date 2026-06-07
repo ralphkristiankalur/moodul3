@@ -3,13 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Lisa album</title>
+  <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
 
-<h1>Lisa album</h1>
+<header class="admin-header">
+  <div class="admin-container admin-nav">
+    <div class="admin-logo">Groove Admin</div>
+    <nav>
+      <a href="/admin/dashboard">Dashboard</a>
+      <a href="/admin/logout">Logi välja</a>
+    </nav>
+  </div>
+</header>
 
-<form method="POST" action="/admin/albums/new">
+<main class="admin-main">
+  <div class="admin-container">
+    <div class="admin-card">
+      <h1 class="admin-title">Lisa album</h1>
 
+      <form class="admin-form" method="POST" action="/admin/albums/new">
   <input type="hidden" name="_csrf" value="<%= csrfToken %>">
 
   <input type="text" name="title" placeholder="Pealkiri" required>
@@ -20,15 +33,15 @@
   <input type="text" name="condition" placeholder="Seisukord" required>
   <input type="text" name="image" placeholder="Pildi failinimi">
 
-  <button type="submit">
-    Salvesta album
-  </button>
-
+  <button class="admin-btn primary" type="submit">Salvesta album</button>
 </form>
 
-<p>
-  <a href="/admin/dashboard">Tagasi</a>
-</p>
+      <p>
+        <a class="admin-btn" href="/admin/dashboard">Tagasi</a>
+      </p>
+    </div>
+  </div>
+</main>
 
 </body>
 </html>

@@ -1172,3 +1172,20 @@ textarea {
   color: white;
 }
 
+.coming-soon {
+  min-height: 420px;
+  padding: 90px 0;
+  text-align: center;
+}
+
+.coming-soon h2 {
+  margin: 0 0 18px;
+  font-size: 42px;
+}
+
+.coming-soon p {
+  max-width: 520px;
+  margin: 0 auto 34px;
+  color: var(--muted);
+  line-height: 1.7;
+}
