@@ -3,104 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Groove | Detailleht</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Groove | <%= album.artist %> - <%= album.title %></title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
 <header class="header">
   <div class="header-container">
-
-    <a href="index.html" class="logo">
-        <picture>
-            <source srcset="assets/webp/bgroove.webp" type="image/webp">
-            <img src="assets/webp/bgroove.webp" alt="Cozy Groove vinyl shop interior" width="800" height="520">
-        </picture>
+    <a href="/" class="logo">
+      <picture>
+        <source srcset="/assets/webp/bgroove.webp" type="image/webp">
+        <img src="/assets/webp/bgroove.webp" alt="Groove logo" width="160" height="80">
+      </picture>
     </a>
 
     <nav>
       <ul class="nav-links">
-        <li><a href="index.html">Avaleht</a></li>
-        <li><a class="active" href="albums.html">Albumid</a></li>
+        <li><a href="/">Avaleht</a></li>
+        <li><a class="active" href="/albums">Albumid</a></li>
         <li><a href="#">Üritused</a></li>
         <li><a href="#">Meist</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="/kontakt">Kontakt</a></li>
       </ul>
     </nav>
 
     <div class="header-icons">
       <a href="#" aria-label="Search">
         <picture>
-          <source srcset="assets/webp/search.webp" type="image/webp">
-          <img src="assets/webp/search.webp" alt="Search">
+          <source srcset="/assets/webp/search.webp" type="image/webp">
+          <img src="/assets/webp/search.webp" alt="Search">
         </picture>
       </a>
 
-      <a href="ostukorv.html" aria-label="Cart">
+      <a href="/ostukorv" aria-label="Cart">
         <picture>
-  <source srcset="assets/webp/cart.webp" type="image/webp">
-  <img src="assets/webp/cart.webp" alt="Cart">
-</picture>
+          <source srcset="/assets/webp/cart.webp" type="image/webp">
+          <img src="/assets/webp/cart.webp" alt="Cart">
+        </picture>
       </a>
     </div>
-
   </div>
 </header>
 
 <main>
   <section class="page-hero small">
     <div class="container">
-      <p>Avaleht / Albumid / Arctic Monkeys</p>
+      <p>Avaleht / Albumid / <%= album.artist %></p>
     </div>
   </section>
 
   <section class="detail container">
     <div class="detail-gallery">
-      <picture>
-  <source srcset="assets/webp/free.webp" type="image/webp">
-  <img src="assets/webp/free.webp" alt="Cozy Groove vinyl shop interior" width="1000" height="400">
-</picture>
+      <img
+        class="main-cover"
+        src="/assets/webp/<%= album.image %>"
+        alt="<%= album.artist %> - <%= album.title %>"
+        width="1000"
+        height="400"
+      >
 
       <div class="thumbs">
-        <picture>
-  <source srcset="assets/webp/fvinuul1.webp" type="image/webp">
-  <img src="assets/webp/fvinuul1.webp" alt="Cozy Groove vinyl shop interior" width="800" height="150">
-</picture>
-        <picture>
-  <source srcset="assets/webp/fvinuul2.webp" type="image/webp">
-  <img src="assets/webp/fvinuul2.webp" alt="Cozy Groove vinyl shop interior" width="800" height="150">
-</picture>
-        <picture>
-  <source srcset="assets/webp/fvinuul3.webp" type="image/webp">
-  <img src="assets/webp/fvinuul3.webp" alt="Cozy Groove vinyl shop interior" width="800" height="150">
-</picture>
+        <img src="/assets/webp/fvinuul1.webp" alt="Vinüülplaadi lähivaade" width="800" height="150" loading="lazy">
+        <img src="/assets/webp/fvinuul2.webp" alt="Vinüülplaadi detailvaade" width="800" height="150" loading="lazy">
+        <img src="/assets/webp/fvinuul3.webp" alt="Vinüülplaadi ümbris" width="800" height="150" loading="lazy">
       </div>
     </div>
 
     <div class="detail-info">
-      <h1>Arctic Monkeys</h1>
-      <h2>AM</h2>
+      <h1><%= album.artist %></h1>
+      <h2><%= album.title %></h2>
 
       <dl>
-        <div><dt>Žanr:</dt><dd>Rock</dd></div>
-        <div><dt>Aasta:</dt><dd>2013</dd></div>
-        <div><dt>Label:</dt><dd>Domino</dd></div>
-        <div><dt>Seisukord:</dt><dd>Väga Hea</dd></div>
-        <div><dt>Kataloog:</dt><dd>CL 13555</dd></div>
+        <div><dt>Žanr:</dt><dd><%= album.genre %></dd></div>
+        <div><dt>Aasta:</dt><dd><%= album.year %></dd></div>
+        <div><dt>Label:</dt><dd>Groove Records</dd></div>
+        <div><dt>Seisukord:</dt><dd><%= album.condition %></dd></div>
+        <div><dt>Kataloog:</dt><dd>GR-<%= album.id %></dd></div>
       </dl>
 
-      <p class="price">Hind: <strong>24.90</strong></p>
+      <p class="price">Hind: <strong><%= album.price %> €</strong></p>
 
       <div class="stock">
         <p>Laos (1tk)</p>
         <div>
-          <button>-</button>
+          <button type="button">-</button>
           <span>1</span>
-          <button>+</button>
+          <button type="button">+</button>
         </div>
       </div>
 
-      <a class="cart-btn" href="ostukorv.html">LISA OSTUKORVI</a>
+      <a class="cart-btn" href="/ostukorv">LISA OSTUKORVI</a>
       <a class="fav-btn" href="#">LISA LEMMIKUTESSE</a>
     </div>
   </section>
@@ -114,11 +106,8 @@
     </nav>
 
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec nibh rhoncus,
-      pharetra ipsum vel, imperdiet dolor. Proin facilisis venenatis eros, id viverra
-      lacus condimentum sit amet. Nunc laoreet pulvinar metus eu sagittis. Aliquam ut
-      dolor rhoncus odio iaculis auctor. Cras quis ante tincidunt, pellentesque est ac,
-      maximus lorem.
+      <%= album.artist %> album "<%= album.title %>" kuulub žanrisse <%= album.genre %>.
+      Plaat on seisukorras <%= album.condition %> ning sobib hästi nii kuulamiseks kui ka kogusse lisamiseks.
     </p>
   </section>
 </main>
@@ -127,16 +116,16 @@
   <div class="container footer-grid">
     <div class="footer-brand">
       <picture>
-  <source srcset="assets/webp/dsa.webp" type="image/webp">
-  <img src="assets/webp/dsa.webp" alt="Cozy Groove vinyl shop interior" width="1500" height="110">
-</picture>
+        <source srcset="/assets/webp/dsa.webp" type="image/webp">
+        <img src="/assets/webp/dsa.webp" alt="Groove logo" width="260" height="110">
+      </picture>
       <p>Vinüülid, kohv ja kogukond.</p>
       <p>Groove | sinu muusika kodu.</p>
     </div>
 
     <div>
       <h3>POOD</h3>
-      <a href="albums.html">Albumid</a>
+      <a href="/albums">Albumid</a>
       <a href="#">Uudised</a>
       <a href="#">Kinkekaart</a>
     </div>
@@ -160,10 +149,11 @@
       <p>info@groove.ee</p>
       <p>+372 1234 4321</p>
       <p>Pärnu mnt. 57, Tallinn</p>
-      <div class="socials">@  f</div>
+      <div class="socials">@ f</div>
     </div>
   </div>
 </footer>
 
+<script src="/js/main.js"></script>
 </body>
 </html>
