@@ -10,68 +10,13 @@
 
 <form method="POST" action="/admin/albums/new">
 
-  <p>
-    <input
-      type="text"
-      name="title"
-      placeholder="Pealkiri"
-      required
-    >
-  </p>
-
-  <p>
-    <input
-      type="text"
-      name="artist"
-      placeholder="Artist"
-      required
-    >
-  </p>
-
-  <p>
-    <input
-      type="text"
-      name="genre"
-      placeholder="Žanr"
-      required
-    >
-  </p>
-
-  <p>
-    <input
-      type="number"
-      name="year"
-      placeholder="Aasta"
-      required
-    >
-  </p>
-
-  <p>
-    <input
-      type="number"
-      step="0.01"
-      name="price"
-      placeholder="Hind"
-      required
-    >
-  </p>
-
-  <p>
-    <input
-      type="text"
-      name="condition"
-      placeholder="Seisukord"
-      required
-    >
-  </p>
-
-  <p>
-    <input
-      type="text"
-      name="image"
-      placeholder="Pildi failinimi"
-    >
-  </p>
+  <input type="text" name="title" placeholder="Pealkiri" required>
+  <input type="text" name="artist" placeholder="Artist" required>
+  <input type="text" name="genre" placeholder="Žanr" required>
+  <input type="number" name="year" placeholder="Aasta" required>
+  <input type="number" step="0.01" name="price" placeholder="Hind" required>
+  <input type="text" name="condition" placeholder="Seisukord" required>
+  <input type="text" name="image" placeholder="Pildi failinimi">
 
   <button type="submit">
     Salvesta album

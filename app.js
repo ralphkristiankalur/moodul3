@@ -40,7 +40,31 @@ app.get("/detail", (req, res) => {
 });
 
 app.get("/kontakt", (req, res) => {
-  res.render("kontakt");
+  res.render("kontakt", { success: false });
+});
+
+app.post("/kontakt", (req, res) => {
+  const { name, email, topic, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.send("Palun täida kõik kohustuslikud väljad");
+  }
+
+  db.run(
+    `
+      INSERT INTO contacts
+      (name, email, subject, message)
+      VALUES (?, ?, ?, ?)
+    `,
+    [name, email, topic || "Teemata", message],
+    (err) => {
+      if (err) {
+        return res.send("Sõnumi saatmine ebaõnnestus");
+      }
+
+      res.render("kontakt", { success: true });
+    }
+  );
 });
 
 app.get("/ostukorv", (req, res) => {
@@ -64,10 +88,7 @@ app.post("/admin/login", (req, res) => {
         return res.send("Vale kasutajanimi");
       }
 
-      const match = await bcrypt.compare(
-        password,
-        user.password
-      );
+      const match = await bcrypt.compare(password, user.password);
 
       if (!match) {
         return res.send("Vale parool");
@@ -87,18 +108,16 @@ app.get("/admin/dashboard", (req, res) => {
     return res.redirect("/admin/login");
   }
 
-  db.all(
-    "SELECT * FROM albums ORDER BY id DESC",
-    [],
-    (err, albums) => {
-      if (err) {
-        return res.send("Albumite laadimisel tekkis viga");
-      }
-
-      res.render("admin/dashboard", { albums });
+  db.all("SELECT * FROM albums ORDER BY id DESC", [], (err, albums) => {
+    if (err) {
+      return res.send("Albumite laadimisel tekkis viga");
     }
-  );
+
+    res.render("admin/dashboard", { albums });
+  });
 });
+
+/* Create album */
 
 app.get("/admin/albums/new", (req, res) => {
   if (!req.session.userId) {
@@ -113,15 +132,7 @@ app.post("/admin/albums/new", (req, res) => {
     return res.redirect("/admin/login");
   }
 
-  const {
-    title,
-    artist,
-    genre,
-    year,
-    price,
-    condition,
-    image
-  } = req.body;
+  const { title, artist, genre, year, price, condition, image } = req.body;
 
   db.run(
     `
@@ -129,15 +140,7 @@ app.post("/admin/albums/new", (req, res) => {
       (title, artist, genre, year, price, condition, image)
       VALUES (?, ?, ?, ?, ?, ?, ?)
     `,
-    [
-      title,
-      artist,
-      genre,
-      year,
-      price,
-      condition,
-      image
-    ],
+    [title, artist, genre, year, price, condition, image],
     (err) => {
       if (err) {
         return res.send("Albumi lisamine ebaõnnestus");
@@ -146,6 +149,68 @@ app.post("/admin/albums/new", (req, res) => {
       res.redirect("/admin/dashboard");
     }
   );
+});
+
+/* Edit album */
+
+app.get("/admin/albums/:id/edit", (req, res) => {
+  if (!req.session.userId) {
+    return res.redirect("/admin/login");
+  }
+
+  db.get("SELECT * FROM albums WHERE id = ?", [req.params.id], (err, album) => {
+    if (err || !album) {
+      return res.send("Albumit ei leitud");
+    }
+
+    res.render("admin/edit-album", { album });
+  });
+});
+
+app.post("/admin/albums/:id/edit", (req, res) => {
+  if (!req.session.userId) {
+    return res.redirect("/admin/login");
+  }
+
+  const { title, artist, genre, year, price, condition, image } = req.body;
+
+  db.run(
+    `
+      UPDATE albums
+      SET title = ?,
+          artist = ?,
+          genre = ?,
+          year = ?,
+          price = ?,
+          condition = ?,
+          image = ?
+      WHERE id = ?
+    `,
+    [title, artist, genre, year, price, condition, image, req.params.id],
+    (err) => {
+      if (err) {
+        return res.send("Muutmine ebaõnnestus");
+      }
+
+      res.redirect("/admin/dashboard");
+    }
+  );
+});
+
+/* Delete album */
+
+app.post("/admin/albums/:id/delete", (req, res) => {
+  if (!req.session.userId) {
+    return res.redirect("/admin/login");
+  }
+
+  db.run("DELETE FROM albums WHERE id = ?", [req.params.id], (err) => {
+    if (err) {
+      return res.send("Kustutamine ebaõnnestus");
+    }
+
+    res.redirect("/admin/dashboard");
+  });
 });
 
 /* Logout */
