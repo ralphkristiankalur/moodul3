@@ -85,6 +85,7 @@ textarea {
 .logo img {
   width: 160px;
   height: auto;
+  margin-left: 18px;
 }
 
 .main-nav {
@@ -148,7 +149,7 @@ textarea {
 .hero-content {
   width: 420px;
   margin-left: auto;
-  margin-right: 75px;
+  margin-right: 171px;
   color: var(--white);
 }
 
@@ -420,6 +421,7 @@ textarea {
 .footer-brand img {
   width: 260px;
   margin-bottom: 28px;
+  margin-inline: -44px;
 }
 
 .footer h3 {
@@ -1046,4 +1048,11 @@ textarea {
   .cart-head {
     display: none;
   }
+}
+
+.map-frame {
+  width: 100%;
+  height: 310px;
+  border: 0;
+  display: block;
 }
