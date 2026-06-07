@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <title>Lisa album</title>
+</head>
+<body>
+
+<h1>Lisa album</h1>
+
+<form method="POST" action="/admin/albums/new">
+
+  <p>
+    <input
+      type="text"
+      name="title"
+      placeholder="Pealkiri"
+      required
+    >
+  </p>
+
+  <p>
+    <input
+      type="text"
+      name="artist"
+      placeholder="Artist"
+      required
+    >
+  </p>
+
+  <p>
+    <input
+      type="text"
+      name="genre"
+      placeholder="Žanr"
+      required
+    >
+  </p>
+
+  <p>
+    <input
+      type="number"
+      name="year"
+      placeholder="Aasta"
+      required
+    >
+  </p>
+
+  <p>
+    <input
+      type="number"
+      step="0.01"
+      name="price"
+      placeholder="Hind"
+      required
+    >
+  </p>
+
+  <p>
+    <input
+      type="text"
+      name="condition"
+      placeholder="Seisukord"
+      required
+    >
+  </p>
+
+  <p>
+    <input
+      type="text"
+      name="image"
+      placeholder="Pildi failinimi"
+    >
+  </p>
+
+  <button type="submit">
+    Salvesta album
+  </button>
+
+</form>
+
+<p>
+  <a href="/admin/dashboard">Tagasi</a>
+</p>
+
+</body>
+</html>

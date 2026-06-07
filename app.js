@@ -87,7 +87,65 @@ app.get("/admin/dashboard", (req, res) => {
     return res.redirect("/admin/login");
   }
 
-  res.send("Admin töötab!");
+  db.all(
+    "SELECT * FROM albums ORDER BY id DESC",
+    [],
+    (err, albums) => {
+      if (err) {
+        return res.send("Albumite laadimisel tekkis viga");
+      }
+
+      res.render("admin/dashboard", { albums });
+    }
+  );
+});
+
+app.get("/admin/albums/new", (req, res) => {
+  if (!req.session.userId) {
+    return res.redirect("/admin/login");
+  }
+
+  res.render("admin/album-form");
+});
+
+app.post("/admin/albums/new", (req, res) => {
+  if (!req.session.userId) {
+    return res.redirect("/admin/login");
+  }
+
+  const {
+    title,
+    artist,
+    genre,
+    year,
+    price,
+    condition,
+    image
+  } = req.body;
+
+  db.run(
+    `
+      INSERT INTO albums
+      (title, artist, genre, year, price, condition, image)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `,
+    [
+      title,
+      artist,
+      genre,
+      year,
+      price,
+      condition,
+      image
+    ],
+    (err) => {
+      if (err) {
+        return res.send("Albumi lisamine ebaõnnestus");
+      }
+
+      res.redirect("/admin/dashboard");
+    }
+  );
 });
 
 /* Logout */

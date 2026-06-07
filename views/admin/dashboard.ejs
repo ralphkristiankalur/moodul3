@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+</head>
+<body>
+  <h1>Albumid</h1>
+
+  <p>
+    <a href="/admin/albums/new">Lisa uus album</a>
+  </p>
+
+  <p>
+    <a href="/admin/logout">Logi välja</a>
+  </p>
+
+  <table border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Pealkiri</th>
+        <th>Artist</th>
+        <th>Žanr</th>
+        <th>Aasta</th>
+        <th>Hind</th>
+        <th>Seisukord</th>
+        <th>Tegevused</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% albums.forEach(album => { %>
+        <tr>
+          <td><%= album.id %></td>
+          <td><%= album.title %></td>
+          <td><%= album.artist %></td>
+          <td><%= album.genre %></td>
+          <td><%= album.year %></td>
+          <td><%= album.price %></td>
+          <td><%= album.condition %></td>
+          <td>
+            <a href="/admin/albums/<%= album.id %>/edit">Muuda</a>
+
+            <form method="POST" action="/admin/albums/<%= album.id %>/delete" style="display:inline;">
+              <button type="submit">Kustuta</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
