@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const sliderTrack = document.querySelector(".slider-track");
   const prevBtn = document.querySelector(".slider-btn.prev");
@@ -31,5 +29,43 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     sliderTrack.style.transform = `translateX(-${currentIndex * slideStep}px)`;
+  });
+});
+
+document.querySelectorAll(".filters").forEach((filterBlock) => {
+  filterBlock.addEventListener("change", (event) => {
+    const clicked = event.target;
+
+    if (clicked.tagName !== "INPUT") return;
+
+    const groupName = clicked.name;
+    const groupInputs = filterBlock.querySelectorAll(`input[name="${groupName}"]`);
+
+    groupInputs.forEach((input) => {
+      if (input !== clicked) {
+        input.checked = false;
+      }
+    });
+
+    clicked.checked = true;
+  });
+});
+
+document.querySelectorAll(".filters").forEach((filterBlock) => {
+  filterBlock.addEventListener("change", (event) => {
+    const clicked = event.target;
+
+    if (clicked.tagName !== "INPUT") return;
+
+    const groupName = clicked.name;
+    const groupInputs = filterBlock.querySelectorAll(`input[name="${groupName}"]`);
+
+    groupInputs.forEach((input) => {
+      if (input !== clicked) {
+        input.checked = false;
+      }
+    });
+
+    clicked.checked = true;
   });
 });

@@ -58,31 +58,69 @@
 
   <section class="album-page container">
     <div class="category-row">
-      <button data-filter="all">Kõik</button>
-      <button data-filter="rock">Rock</button>
-      <button data-filter="jazz">Jazz</button>
-      <button data-filter="soul">Soul</button>
-      <button data-filter="hip-hop">Hip-Hop</button>
-      <button data-filter="electronic">Electronic</button>
+      <button class="genre-btn active" data-genre="all">Kõik</button>
+<button class="genre-btn" data-genre="rock">Rock</button>
+<button class="genre-btn" data-genre="jazz">Jazz</button>
+<button class="genre-btn" data-genre="soul">Soul</button>
+<button class="genre-btn" data-genre="hiphop">Hip-Hop</button>
+<button class="genre-btn" data-genre="electronic">Electronic</button>
     </div>
 
     <div class="album-layout">
       <aside class="filters">
         <h2>Aasta</h2>
 
-        <label><span class="box active"></span>Kõik</label>
-        <label><span class="box"></span>2020 - 2026</label>
-        <label><span class="box"></span>2010 - 2019</label>
-        <label><span class="box"></span>2000 - 2009</label>
-        <label><span class="box"></span>1990 - 1999</label>
-        <label><span class="box"></span>Enne 1990</label>
+        <label>
+  <input type="checkbox" name="year" checked>
+  <span>Kõik</span>
+</label>
+
+<label>
+  <input type="checkbox" name="year">
+  <span>2020 - 2026</span>
+</label>
+
+<label>
+  <input type="checkbox" name="year">
+  <span>2010 - 2019</span>
+</label>
+
+<label>
+  <input type="checkbox" name="year">
+  <span>2000 - 2009</span>
+</label>
+
+<label>
+  <input type="checkbox" name="year">
+  <span>1990 - 1999</span>
+</label>
+
+<label>
+  <input type="checkbox" name="year">
+  <span>Enne 1990</span>
+</label>
 
         <h2>Seisukord</h2>
 
-        <label><span class="box active"></span>Hea</label>
-        <label><span class="box"></span>Väga Hea</label>
-        <label><span class="box"></span>Kõik</label>
-        <label><span class="box"></span>Parim</label>
+        <label>
+  <input type="checkbox" name="condition" checked>
+  <span>Hea</span>
+</label>
+
+<label>
+  <input type="checkbox" name="condition">
+  <span>Väga Hea</span>
+</label>
+
+<label>
+  <input type="checkbox" name="condition">
+  <span>Kõik</span>
+</label>
+
+<label>
+  <input type="checkbox" name="condition">
+  <span>Parim</span>
+</label>
       </aside>
 
       <div class="album-content">
