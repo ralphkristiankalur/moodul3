@@ -9,6 +9,9 @@
 <h1>Admin Login</h1>
 
 <form method="POST" action="/admin/login">
+
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
   <input
     type="text"
     name="username"

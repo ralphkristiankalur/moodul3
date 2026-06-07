@@ -43,8 +43,11 @@
             <a href="/admin/albums/<%= album.id %>/edit">Muuda</a>
 
             <form method="POST" action="/admin/albums/<%= album.id %>/delete" style="display:inline;">
-              <button type="submit">Kustuta</button>
-            </form>
+
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+  <button type="submit">Kustuta</button>
+</form>
           </td>
         </tr>
       <% }) %>

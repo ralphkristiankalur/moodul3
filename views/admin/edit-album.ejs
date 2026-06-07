@@ -10,6 +10,8 @@
 
 <form method="POST" action="/admin/albums/<%= album.id %>/edit">
 
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
   <input type="text" name="title" value="<%= album.title %>" required>
   <input type="text" name="artist" value="<%= album.artist %>" required>
   <input type="text" name="genre" value="<%= album.genre %>" required>

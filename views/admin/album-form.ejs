@@ -10,6 +10,8 @@
 
 <form method="POST" action="/admin/albums/new">
 
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
   <input type="text" name="title" placeholder="Pealkiri" required>
   <input type="text" name="artist" placeholder="Artist" required>
   <input type="text" name="genre" placeholder="Žanr" required>

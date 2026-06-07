@@ -3,18 +3,24 @@ const path = require("path");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
 const db = require("./database/db");
+const cookieParser = require("cookie-parser");
+const csrf = require("csurf");
+const { body, validationResult } = require("express-validator");
 
 require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const { body, validationResult } = require("express-validator");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.use(cookieParser());
 
 app.use(
   session({
@@ -24,7 +30,13 @@ app.use(
   })
 );
 
-app.use(express.static(path.join(__dirname, "public")));
+const csrfProtection = csrf({ cookie: true });
+app.use(csrfProtection);
+
+app.use((req, res, next) => {
+  res.locals.csrfToken = req.csrfToken();
+  next();
+});
 
 /* Public routes */
 
@@ -47,26 +59,10 @@ app.get("/kontakt", (req, res) => {
 app.post(
   "/kontakt",
   [
-    body("name")
-      .trim()
-      .isLength({ min: 2 })
-      .withMessage("Nimi peab olema vähemalt 2 tähemärki"),
-
-    body("email")
-      .trim()
-      .isEmail()
-      .withMessage("Sisesta korrektne e-post"),
-
-    body("message")
-      .trim()
-      .isLength({ min: 5 })
-      .withMessage("Sõnum peab olema vähemalt 5 tähemärki"),
-
-    body("topic")
-      .optional({ checkFalsy: true })
-      .trim()
-      .isLength({ max: 100 })
-      .withMessage("Teema on liiga pikk")
+    body("name").trim().isLength({ min: 2 }).withMessage("Nimi peab olema vähemalt 2 tähemärki"),
+    body("email").trim().isEmail().withMessage("Sisesta korrektne e-post"),
+    body("message").trim().isLength({ min: 5 }).withMessage("Sõnum peab olema vähemalt 5 tähemärki"),
+    body("topic").optional({ checkFalsy: true }).trim().isLength({ max: 100 }).withMessage("Teema on liiga pikk")
   ],
   (req, res) => {
     const errors = validationResult(req);
@@ -79,9 +75,9 @@ app.post(
 
     db.run(
       `
-        INSERT INTO contacts
-        (name, email, subject, message)
-        VALUES (?, ?, ?, ?)
+      INSERT INTO contacts
+      (name, email, subject, message)
+      VALUES (?, ?, ?, ?)
       `,
       [name, email, topic || "Teemata", message],
       (err) => {
@@ -108,25 +104,20 @@ app.get("/admin/login", (req, res) => {
 app.post("/admin/login", (req, res) => {
   const { username, password } = req.body;
 
-  db.get(
-    "SELECT * FROM users WHERE username = ?",
-    [username],
-    async (err, user) => {
-      if (err || !user) {
-        return res.send("Vale kasutajanimi");
-      }
-
-      const match = await bcrypt.compare(password, user.password);
-
-      if (!match) {
-        return res.send("Vale parool");
-      }
-
-      req.session.userId = user.id;
-
-      res.redirect("/admin/dashboard");
+  db.get("SELECT * FROM users WHERE username = ?", [username], async (err, user) => {
+    if (err || !user) {
+      return res.send("Vale kasutajanimi");
     }
-  );
+
+    const match = await bcrypt.compare(password, user.password);
+
+    if (!match) {
+      return res.send("Vale parool");
+    }
+
+    req.session.userId = user.id;
+    res.redirect("/admin/dashboard");
+  });
 });
 
 /* Admin dashboard */
@@ -164,9 +155,9 @@ app.post("/admin/albums/new", (req, res) => {
 
   db.run(
     `
-      INSERT INTO albums
-      (title, artist, genre, year, price, condition, image)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO albums
+    (title, artist, genre, year, price, condition, image)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
     `,
     [title, artist, genre, year, price, condition, image],
     (err) => {
@@ -204,15 +195,15 @@ app.post("/admin/albums/:id/edit", (req, res) => {
 
   db.run(
     `
-      UPDATE albums
-      SET title = ?,
-          artist = ?,
-          genre = ?,
-          year = ?,
-          price = ?,
-          condition = ?,
-          image = ?
-      WHERE id = ?
+    UPDATE albums
+    SET title = ?,
+        artist = ?,
+        genre = ?,
+        year = ?,
+        price = ?,
+        condition = ?,
+        image = ?
+    WHERE id = ?
     `,
     [title, artist, genre, year, price, condition, image, req.params.id],
     (err) => {
