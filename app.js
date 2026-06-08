@@ -185,6 +185,20 @@ app.get("/admin/dashboard", (req, res) => {
   });
 });
 
+app.get("/admin/messages", (req, res) => {
+  if (!req.session.userId) {
+    return res.redirect("/admin/login");
+  }
+
+  db.all("SELECT * FROM contacts ORDER BY created_at DESC", [], (err, messages) => {
+    if (err) {
+      return res.send("Sõnumite laadimisel tekkis viga");
+    }
+
+    res.render("admin/messages", { messages });
+  });
+});
+
 /* Create album */
 
 app.get("/admin/albums/new", (req, res) => {

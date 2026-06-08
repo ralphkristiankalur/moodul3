@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <title>Kontaktisõnumid</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<header class="admin-header">
+  <div class="admin-container admin-nav">
+    <div class="admin-logo">Groove Admin</div>
+    <nav>
+      <a href="/admin/dashboard">Dashboard</a>
+      <a href="/admin/messages">Sõnumid</a>
+      <a href="/admin/logout">Logi välja</a>
+    </nav>
+  </div>
+</header>
+
+<main class="admin-main">
+  <div class="admin-container">
+    <div class="admin-card">
+      <h1 class="admin-title">Kontaktisõnumid</h1>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Nimi</th>
+            <th>E-post</th>
+            <th>Teema</th>
+            <th>Sõnum</th>
+            <th>Aeg</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% messages.forEach(message => { %>
+            <tr>
+              <td><%= message.name %></td>
+              <td><%= message.email %></td>
+              <td><%= message.subject %></td>
+              <td><%= message.message %></td>
+              <td><%= message.created_at %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>
